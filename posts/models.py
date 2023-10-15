@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 class Author(models.Model):
     name = models.CharField(max_length=100)
     bio = models.TextField(max_length=500)
-    image = models.ImageField(upload_to=authors)
+    image = models.ImageField(upload_to='authors')
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Post(models.Model):
     puplish_date = models.DateTimeField()
     content = models.TextField(max_length=15000)
     Author  = models.ForeignKey(Author,related_name='post_author',on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=posts)
+    image = models.ImageField(upload_to='posts')
     tags = TaggableManager() 
     
 
